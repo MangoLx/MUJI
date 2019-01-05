@@ -1,0 +1,202 @@
+@import './component/base.scss';
+@import './component/HF.scss';
+@import './component/section.scss';
+
+@mixin center {
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.detail-show-wrap{
+    @include center();
+    min-height: 506px;
+    text-align: center;
+    &>img{
+        width: 414px;
+        height: 415px;
+    }
+    &>p{
+        font-size: 14px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+    &>span{
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
+
+.detail-explain-wrap{
+    @include center();
+    min-height: 70px;
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+    padding: 13px 0 13px 17px;
+    &>p{
+        line-height: 23px;
+        font-size: 13px;
+    }
+    &>p:last-child{
+        color: #7f0019;
+    }
+}
+
+.detail-info-wrap{
+    @include center();
+    min-height: 200px;
+    .info-title{
+        border-bottom: 1px solid #f2f2f2;
+        text-align: center;
+        &>span{
+            line-height: 60px;
+            margin-left: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    .info-data{
+        &>p{
+            line-height: 44px;
+            border-bottom: 1px solid #e5e5e5;
+            color: #ccc;
+            font-size: 13px;
+            margin-left: 15px;
+            span{
+                color: #000000;
+                margin-left: 30px;
+            }
+        }
+        &>p:last-child{
+            border: none;
+            span{
+                margin-left: 46px;
+            }
+        }
+    }
+}
+
+.operate-wrap{
+    @include center();
+    height: 74px;
+    padding-left: 25px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    &>a{
+        float: left;
+        width: 25px;
+        height: 42px;
+        box-sizing: border-box;
+        color: #000000;
+        padding-top: 31px;
+        font-size: 12px;
+        background: url(../images/icon/server.jpg) no-repeat;
+        margin-right: 20px;
+    }
+    &>span{
+        float: left;
+        width: 453px;
+        line-height: 44px;
+        border-radius: 15px;
+        text-align: center;
+        background-color: #7f0019;
+        color: #fff;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+}
+
+.detail-add{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+}
+.add-wrap{
+    @include center();
+    min-height: 286px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    .add-top{
+        margin-top: 20px;
+        &>div{
+            float: left;
+        }
+        .add-top-left{
+            height: 120px;
+            margin-right: 25px;
+            img{
+                width: 120px;
+                height: 120px;
+            }
+            margin-bottom: 30px;
+        }
+        .add-top-right{
+            padding-top: 24px;
+            &>span{
+                display: block;
+                font-size: 12px;
+                line-height: 24px;
+            }
+            .add-weight{
+                color: #dddddd;
+            }
+        }
+    }
+    .add-center{
+        padding-left: 15px;
+        font-size: 12px;
+        margin-bottom: 30px;
+        &>div{
+            float: left;
+        }
+        .add-text{
+            margin-right: 18px;
+            margin-top: 7px;
+        }
+        .add-count{
+            width: 140px;
+            height: 28px;
+            border-radius: 15px;
+            &>span{
+                float: left;
+                text-align: center;
+                box-sizing: border-box;
+                line-height: 27px;
+            }
+            .counts-sub{
+                width: 30px;
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
+                border: 1px solid #dddddd;
+                cursor: pointer;
+            }
+            .detail-counts{
+                width: 46px;
+                border-top: 1px solid #dddddd;
+                border-bottom: 1px solid #dddddd;
+                cursor: none;
+            }
+            .counts-add{
+                width: 30px;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+                border: 1px solid #dddddd;
+                cursor: pointer;
+            }
+        }
+    }
+    .add-bottom{
+        text-align: center;
+        .add-sure{
+            width: 970px;
+            display: inline-block;
+            text-align: center;
+            line-height: 44px;
+            background-color: #7f0019;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <link rel='shortcut icon' href="../images/icon/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header></header>
+
+    <!-- 提交表单 -->
+    <div class="login">
+        <form action="">
+            <h3>注册</h3>
+            <h3>商城账号</h3>
+            <label for="username">请输入用户名：（字母数字下划线组成的6位以上的组合）</label>
+            <input type="text" name="username" placeholder="请输入用户名" id="username">
+            <label for="passowrd">请输入密码：（6位以上）</label>
+            <input type="password" name="pwd" placeholder="请输入密码" id="password">
+            <label for="repwd">请确认密码：</label>
+            <input type="password" name="repwd" placeholder="请确认密码" id="repwd">
+            <label for="tel">请输入电话：</label>
+            <input type="text" name="tel" placeholder="请输入电话" id="tel">
+            <label for="addr">请输入地址：</label>
+            <input type="text" name="address" placeholder="请输入收货地址" id="addr">
+            <span class="btn" id="btn">注册</span>
+            <div class="more clear">
+                <a href="login.html">已有账号？</a>
+            </div>
+            <p><a href="#">如登录遇到异常，请联系客服电话 400-920-9299</a></p>
+        </form>
+    </div>
+    
+
+    <!-- 尾部 -->
+    <footer></footer>
+
+    <!-- 填写警告栏位 -->
+    <div class="warning">
+       格式错误
+    </div>
+
+    <script src="/libs/require/require.js" data-main="/js/register.js"></script>
+</body>
+</html>

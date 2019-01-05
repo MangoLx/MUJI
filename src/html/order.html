@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单</title>
+    <link rel='shortcut icon' href="../images/icon/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../css/order.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header></header>
+
+    <!-- 提示信息 -->
+    <section>
+        <div class="section-title">
+            <span>订单结算</span>
+        </div>
+    </section>
+
+    <!-- 地址信息 -->
+    <div class="address">
+        <div class="address-wrap">
+            <span class="addr-span">还没有添加地址信息，请尽快添加</span>
+        </div>
+    </div>
+
+    <!-- 物品信息 -->
+    <div class="order-all">
+        <div class="order-wrap">
+            <ul class="clear">
+                <li class="clear">
+                    <div class="order-left">
+                        <img src="../images/recommoned/curry.jpg" alt="咖喱鸡肉">
+                    </div>
+                    <div class="order-right">
+                        <span class="order-goods-name">鸡肉酱咖喱</span>
+                        <span class="order-goods-size">尺码：180g</span>
+                        <p>
+                            <span class="order-goods-price">￥24</span>
+                            <span class="order-goods-num">x1</span>
+                        </p>
+                    </div>
+                </li>
+                <li class="clear">
+                    <div class="order-left">
+                        <img src="../images/recommoned/curry.jpg" alt="咖喱鸡肉">
+                    </div>
+                    <div class="order-right">
+                        <span class="order-goods-name">鸡肉酱咖喱</span>
+                        <span class="order-goods-size">尺码：180g</span>
+                        <p>
+                            <span class="order-goods-price">￥24</span>
+                            <span class="order-goods-num">x1</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div> 
+
+    <!-- 配送方式 -->
+    <div class="send">
+        <div class="send-wrap">
+            <div class="send-left">配送方式</div>
+            <div class="send-right">
+                <p>
+                    <span>快递</span>
+                    <span>根据收货地区自动分配</span>
+                </p>
+                <p>
+                    <span>运费</span>
+                    <span>¥0</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 支付方式 -->
+    <div class="pay">
+        <div class="pay-wrap">
+            <span>支付方式</span>
+            <span>支付宝</span>
+        </div>
+    </div>
+
+    <!-- 去付款 -->
+    <div class="goPay">
+        <div class="goPay-wrap">
+            <div class="goPay-top clear">
+                <span class="result-num">0件物品</span>
+                <span class="result-money">应付：<b class="total-money">￥0.00</b></span>
+            </div>
+            <div class="goPay-bottom">
+                <span class="goToPay">去付款</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer></footer>
+
+
+    <script src="/libs/require/require.js" data-main="/js/order.js"></script>
+</body>
+</html>

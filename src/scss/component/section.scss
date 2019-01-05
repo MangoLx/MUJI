@@ -1,0 +1,90 @@
+
+@mixin center {
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+body>section{
+    .section-wrap{
+        @include center();
+        height: 44px;
+        background-color: #f9f9f9;
+        padding-top: 9px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #cccccc; 
+        .option{
+            float: right;
+            &>div{
+                float: left;
+            }
+            .option-left{
+                a{
+                    width: 26px;
+                    height: 26px;
+                    float: left;
+                    margin-right: 20px;
+                    background: url(../images/icon/options.jpg) no-repeat;
+                }
+                a:first-child{
+                    background-position: -44px 0;
+                }
+                a:nth-child(2){
+                    background-position: -87px 0;
+                }
+                a:last-child{
+                    background-position: -131px 0;
+                }
+            }
+            .option-center{
+                font-size: 12px;
+                position: relative;
+                margin-right: 20px;
+                &>span{
+                    color: #7f0019;
+                    display: inline-block;
+                    line-height: 26px;
+                    cursor: pointer;
+                }
+                &>i{
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    background: url(../images/2code.png) no-repeat;
+                    background-size: 100% 100%;
+                    top: 25px;
+                    left: -14px;
+                    display: none;
+                    z-index: 3;
+                    border: 5px solid #cccccc;
+                }
+            }
+            .option-right{
+                a{
+                    display: inline-block;
+                    width: 74px;
+                    height: 26px;
+                    border-radius: 15px;
+                    text-align: center;
+                    line-height: 26px;
+                    font-size: 12px;
+                    border: 1px solid #7f0019;
+                    color: #7f0019;
+                    cursor: pointer;
+                }
+                &>span{
+                    cursor: pointer;
+                    font-size: 12px;
+                    line-height: 26px;
+                    display: none;
+                }
+                .welcome{
+                    color: #7f0019;
+                }
+                .out{
+                    color: coral;
+                }
+            }
+        }
+    }
+}

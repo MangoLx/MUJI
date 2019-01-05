@@ -1,0 +1,74 @@
+@import './component/base.scss';
+@import './component/HF.scss';
+@import './component/section.scss';
+
+@mixin center {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.note-wrap{
+    @include center();
+    .note-title{
+        height: 45px;
+        border-bottom: 1px solid #000;
+        box-sizing: border-box;
+        padding-left: 20px;
+        &>span{
+            line-height: 44px;
+            font-size: 15px;
+            color: #e3e3e3;
+            margin-right: 20px;
+        }
+        &>span.cur{
+            color: #000;
+        }
+    }
+    .note-choose{
+        height: 39px;
+        border-bottom: 1px solid #000;
+        text-align: center;
+        margin-bottom: 29px;
+        &>span{
+            line-height: 40px;
+            font-size: 12px;
+            color: #e3e3e3;
+            margin-right: 20px;
+        }
+        &>span.cur{
+            color: #000;
+        }
+    }
+}
+
+.product-wrap{
+    @include center();
+    &>ul{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        li{
+            width: 186px;
+            height: 235px;
+            float: left;
+            margin-bottom: 30px;
+            cursor: pointer;
+            img{
+                width: 186px;
+                height: 187px;
+                vertical-align: middle;
+            }
+            p{
+                margin-top: 6px;
+                font-size: 12px;
+                color: #030303;
+            }
+            span{
+                color: #000000;
+                font-size: 13px;
+                font-weight: bold;
+            }
+        }
+    }
+}
