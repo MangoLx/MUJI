@@ -17,10 +17,13 @@
         position: relative;
         height: 500px;
         background-color: #7f0019;
+        overflow: hidden;
         ul{
+            position: absolute;
             overflow: hidden;
             height: 500px;
             &>li{
+                float: left;
                 a{
                     display: inline-block;
                     width: 1000px;
@@ -73,6 +76,7 @@
             top: 40%;
             cursor: pointer;
             font-size: 26px;
+            opacity: 0;
         }
         .goNext{
             position: absolute;
@@ -85,6 +89,7 @@
             top: 40%;
             cursor: pointer;
             font-size: 26px;
+            opacity: 0;
         }
     }
 }
@@ -113,10 +118,13 @@
             margin: 0 auto;
             overflow: hidden;
             .goods{
+                height: 180px;
                 width: 879px;
                 overflow: hidden;
                 margin: 0 auto;
+                position: relative;
                 ul{
+                    position: absolute;
                     height: 180px;
                     margin: 0 auto;
                     width: 1150px;

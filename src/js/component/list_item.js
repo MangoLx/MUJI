@@ -1,7 +1,7 @@
 define(['jquery', 'template', 'url'], function($, template, url) {
     class ListItem{
         constructor(){
-            this.init();
+
         }
         init(){
             // 先把ul添加到index上
@@ -30,6 +30,25 @@ define(['jquery', 'template', 'url'], function($, template, url) {
                         $('#list-item').html(html);
                     }
                 })
+            })
+        }
+        addItem(){
+            new Promise((resolve, reject) => {
+                $.ajax({
+                    url: url.baseUrlRap + 'list_item',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (res) {  
+                        resolve(res);
+                    }
+                })
+            }).then((res) => {
+                if(res.res_code === 1){
+                    let list = res.res_body;
+                    // template渲染
+                    let html = template('index_comm_template', {list});
+                    $('#list-item').html($('#list-item').html() + html);
+                }
             })
         }
     }

@@ -27,7 +27,7 @@
     <!-- 商品说明 -->
     <div class="detail-explain">
         <div class="detail-explain-wrap">
-            <p>商品编号：<span>4549738671053</span></p>
+            <p>商品编号：<span id="detail_id">4549738671053</span></p>
             <p>此商品为食品类商品，非质量问题售出概不退换。</p>
         </div>
     </div>
@@ -39,9 +39,9 @@
                 <span>产品参数</span>
             </div>
             <div class="info-data">
-                <p>商品名称  <span>迷你脆脆面_焦香酱油味</span></p>
-                <p>规格名称  <span>30g</span></p>
-                <p>原产地    <span>中国</span></p>
+                <p>商品名称  <span id="detail_name">迷你脆脆面_焦香酱油味</span></p>
+                <p>规格名称  <span id="detail_size">30g</span></p>
+                <p>原产地    <span id="detail_origin">中国</span></p>
             </div>
         </div>
     </div>
@@ -50,8 +50,8 @@
     <div class="detail-operate">
         <div class="operate-wrap">
             <a href="#">客服</a>
-            <span>加入购物车</span>
-            <span>立即购买</span>
+            <span id="add_cart">加入购物车</span>
+            <span id="add_buy">立即购买</span>
         </div>
     </div>
 
@@ -60,7 +60,7 @@
         <div class="add-wrap">
             <div class="add-top clear">
                 <div class="add-top-left">
-                    <img src="../images/recommoned/noodle.jpg" alt="干脆面">
+                    <img src="../images/recommoned/noodle.jpg" alt="干脆面" class="add-img">
                 </div>
                 <div class="add-top-right">
                     <span class="add-name">迷你脆脆面_焦香酱油味</span>
@@ -71,9 +71,9 @@
             <div class="add-center clear">
                 <div class="add-text"><span>数量</span></div>
                 <div class="add-count">
-                    <span class="counts-sub">-</span>
-                    <span class="detail-counts">1</span>
-                    <span class="counts-add">+</span>
+                    <span class="counts-sub" id="counts_sub">-</span>
+                    <span class="detail-counts" id="detail_counts">1</span>
+                    <span class="counts-add" id="counts_add">+</span>
                 </div>
             </div>
             <div class="add-bottom">
