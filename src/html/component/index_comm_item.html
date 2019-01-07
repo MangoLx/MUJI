@@ -1,0 +1,25 @@
+
+<script type="text/html" id="index_comm_template">
+    {{each list item i}}
+        {{if item.index_comm_item_id}}
+            <li data-id='{{ item.index_comm_item_id }}'>
+                <img src="{{ item.index_comm_item_img }}" alt="{{ item.index_comm_item_name }}">
+                <p>{{ item.index_comm_item_name }}</p>
+                <span>￥{{ item.index_comm_item_price }}</span>
+            </li>
+        {{else if item.index_new_item_index}}
+                <li data-id='{{ item.index_new_item_index }}'>
+                    <img src="{{ item.index_new_item_img }}" alt="{{ item.index_new_item_name }}">
+                    <p>{{ item.index_new_item_name }}</p>
+                    <span class="nowPrice">￥{{ item.index_new_item_nowPrice }}</span>
+                    <span class="oldPrice">￥{{ item.index_new_item_oldPrice }}</span>
+                </li>
+        {{else}}
+            <li data-id='{{ item.list_id }}'>
+                    <img src="{{ item.list_img }}" alt="{{ item.list_name }}">
+                    <p>{{ item.list_name }}</p>
+                    <span>￥{{ item.list_price }}</span>
+            </li> 
+        {{/if}}
+    {{/each}}
+</script>

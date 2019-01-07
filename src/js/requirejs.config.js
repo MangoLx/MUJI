@@ -6,7 +6,11 @@ require.config({
         'header': 'js/component/header',
         'footer': 'js/component/footer',
         'section': 'js/component/section',
-        'url': 'js/component/url'
+        'url': 'js/component/url',
+        'template': 'libs/template/template-web',
+        'index_comm_item': 'js/component/index_comm_item',
+        'index_new_item': 'js/component/index_new_item',
+        'list_item': 'js/component/list_item'
     },
     shim: {
         'cookie': {
