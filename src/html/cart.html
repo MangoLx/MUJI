@@ -16,72 +16,38 @@
     <section>
         <div class="section-title">
             <span>购物车</span>
-            <span class="editBtn">编辑</span>
-            <span class="sureBtn">完成</span>
+            <span class="editBtn" id="editBtn">编辑</span>
+            <span class="sureBtn" id="sureBtn">完成</span>
         </div>
     </section>
 
     <!-- 商品 -->
     <div class="goods">
         <div class="goods-wrap">
-            <ul>
-                <li class="clear">
-                    <div class="goods-left">
-                        <input type="checkbox" class="goods-choose">
-                        <img src="../images/recommoned/noodle.jpg" alt="食物" class="goods-img">
-                    </div>  
-                    <div class="goods-right">
-                        <p>
-                            <span class="goods-name">鸡肉酱咖喱</span>
-                            <span class="delBtn">删除</span>
-                        </p>
-                        <span class="goods-size">尺码：180g</span>
-                        <p>
-                            <span class="goods-price">￥24</span>
-                            <span class="goods-add">+</span>
-                            <span class="goods-num">1</span>
-                            <span class="goods-sub">-</span>
-                        </p>
-                    </div>  
-                </li>
-                <li class="clear">
-                    <div class="goods-left">
-                        <input type="checkbox" class="goods-choose">
-                        <img src="../images/recommoned/noodle.jpg" alt="食物" class="goods-img">
-                    </div>  
-                    <div class="goods-right">
-                        <p>
-                            <span class="goods-name">鸡肉酱咖喱</span>
-                            <span class="delBtn">删除</span>
-                        </p>
-                        <span class="goods-size">尺码：180g</span>
-                        <p>
-                            <span class="goods-price">￥24</span>
-                            <span class="goods-add">+</span>
-                            <span class="goods-num">1</span>
-                            <span class="goods-sub">-</span>
-                        </p>
-                    </div>  
-                </li>
-                <li class="clear">
-                    <div class="goods-left">
-                        <input type="checkbox" class="goods-choose">
-                        <img src="../images/recommoned/noodle.jpg" alt="食物" class="goods-img">
-                    </div>  
-                    <div class="goods-right">
-                        <p>
-                            <span class="goods-name">鸡肉酱咖喱</span>
-                            <span class="delBtn">删除</span>
-                        </p>
-                        <span class="goods-size">尺码：180g</span>
-                        <p>
-                            <span class="goods-price">￥24</span>
-                            <span class="goods-add">+</span>
-                            <span class="goods-num">1</span>
-                            <span class="goods-sub">-</span>
-                        </p>
-                    </div>  
-                </li>
+            <ul id="total_carts">
+                <script type="text/html" id="cart_goods">
+                    {{each goods item i}}
+                        <li class="clear" data-id='{{ item.id }}'>
+                            <div class="goods-left">
+                                <input type="checkbox" class="goods-choose">
+                                <img src="{{ item.imgAddr }}" alt="{{ item.name }}" class="goods-img">
+                            </div>  
+                            <div class="goods-right">
+                                <p>
+                                    <span class="goods-name">{{ item.name }}</span>
+                                    <span class="delBtn">删除</span>
+                                </p>
+                                <span class="goods-size">尺码：{{ item.size }}</span>
+                                <p>
+                                    <span class="goods-price">{{ item.price }}</span>
+                                    <span class="goods-add">+</span>
+                                    <span class="goods-num">{{ item.count }}</span>
+                                    <span class="goods-sub">-</span>
+                                </p>
+                            </div>  
+                        </li>
+                    {{/each}}
+                </script>
             </ul>
         </div>
     </div>
@@ -102,9 +68,9 @@
     <div class="goOrder">
         <div class="goOrder-wrap">
             <div class="goOrder-top clear">
-                <input type="checkbox" id="chooseAll" class="chooseAll">
-                <span class="result-num">0件物品</span>
-                <span class="result-money">应付：<b class="total-money">￥0.00</b></span>
+                <input type="checkbox" id="chooseAll" class="chooseAll" checked='true'>
+                <span class="result-num" id="result_num">0件物品</span>
+                <span class="result-money">应付：<b class="total-money" id="total_money">￥0.00</b></span>
             </div>
             <div class="goOrder-bottom">
                 <span class="goToOrder">去结算</span>

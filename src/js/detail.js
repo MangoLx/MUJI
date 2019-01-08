@@ -1,18 +1,15 @@
 // 引入模块
 require(['./requirejs.config'], () => {
-    require(['url','jquery', 'header', 'footer', 'section'], (url) => {
+    require(['url', 'template', 'cookie', 'jquery', 'header', 'footer', 'section'], (url, template, cookie) => {
         (function () {  
             // 得到id
             getId();
-            // 购买方法
-            buy();
-            // 确定方法
-            sureFace();
+            
         })()
 
         // 读取获得的id发送请求函数
         function getId() {  
-            let id = parseInt(location.search.slice(2));
+            let id = parseInt(location.search.slice(4));
             new Promise((resolve, reject) => {
                 $.ajax({
                     url: url.baseUrlRap + 'get_detail_info',
@@ -29,25 +26,13 @@ require(['./requirejs.config'], () => {
                 if(res.res_code === 1){
                     // 请求成功，渲染页面
                     let data = res.res_body;
-                    let detail_show = $('.detail-show-wrap');
-                    detail_show.children().eq(0).attr({
-                        src: data.detail_img,
-                        alt: data.detail_name
-                    });
-                    detail_show.children().eq(1).text(data.detail_name);
-                    detail_show.children().eq(2).text('￥' + data.detail_price);
-                    $('#detail_id').text(data.detail_id);
-                    $('#detail_name').text(data.detail_name);
-                    $('#detail_size').text(data.detail_size + 'g');
-                    $('#detail_origin').text(data.detail_origin);
-
-                    $('.add-img').attr({
-                        src: data.detail_img,
-                        alt: data.detail_name
-                    })
-                    $('.add-name').text(data.detail_name);
-                    $('.add-price').text('￥' + data.detail_price);
-                    $('.add-weight').text(data.detail_size + 'g');
+                    let html = template('detail_infos', {data});
+                    $(html).insertBefore($('footer'));
+                    $('#detail_id').text(id);
+                    // 购买方法
+                    buy();
+                    // 确定方法
+                    sureFace();
                 }
             })
         }
@@ -82,16 +67,44 @@ require(['./requirejs.config'], () => {
         // 添加界面事件添加
         function sureFace() {
             let detail_counts = $('#detail_counts');
+            // 增加数量
             $('#counts_add').on('click', function () {  
                 detail_counts.text(Number(detail_counts.text()) + 1);
                 return false;
             });
+            //减少数量
             $('#counts_sub').on('click', function () {  
                 if(!(Number(detail_counts.text()) <= 1)){
                     detail_counts.text(Number(detail_counts.text()) - 1);
                 }
                 return false;
-            })
+            });
+            // 点击确定添加购物车
+            $('#add_sure').on('click', function () {  
+                // 得到商品id、名称、价格、数量、规格、图片地址
+                let id = $('#detail_id').text();
+                let name = $('#detail_name').text();
+                let size = $('#detail_size').text();
+                let price = $('.add-price').text();
+                let imgAddr = $('.add-img').attr('src');
+                let count = Number($('#detail_counts').text());
+                let detail = {
+                    id,name,size,price,imgAddr,count
+                }
+                addCookie(detail);
+            });
+        }
+        function addCookie(obj) {  
+            let cart = $.cookie('cart') ? JSON.parse($.cookie('cart')) : [];
+            let index;
+            let flag = cart.some(function (value, i) {  
+                index = i;
+                return value.id === obj.id;
+            });
+            flag ? cart[index].count += obj.count : cart.push(obj);
+            // 重新插入cookie
+            $.cookie('cart', JSON.stringify(cart), {path: '/', expires: 3});
+            console.log(JSON.parse($.cookie('cart')));
         }
     })
 })
