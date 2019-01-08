@@ -127,6 +127,9 @@ require(['./requirejs.config'], () => {
             // 事件委托
             $('#index_comm_item').on('click', 'li', function () { 
                 location.href = '/html/detail.html?id=' + $(this).data('id');
+            });
+            $('#index_new_item').on('click', 'li', function () {  
+                location.href = '/html/detail.html?id=' + $(this).data('id');
             })
         }
     })

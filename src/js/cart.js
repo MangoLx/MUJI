@@ -7,23 +7,34 @@ require(['./requirejs.config'], () => {
             
             // 编辑
             edit();
+
+            toDetail();
         })();
 
         // 加载cookie显示商品
         function loadDetails() {  
             let goods = $.cookie('cart') ? JSON.parse($.cookie('cart')) : [];
-            console.log(goods);
-            // template渲染
-            let html = template('cart_goods', {goods});
-            $('#total_carts').html(html);
-            // 全选
-            allChoose();
-            // 计算总数
-            count(goods);
-            // 计算价格
-            money(goods);
-
-            btnControl();
+            if(!goods[0]){
+                $('#total_carts').append($('<strong>').css({
+                    display: 'block', 
+                    lineHeight: '300px',
+                    textAlign: 'center',
+                    backgroundColor: '#cccccc'
+                }).text('您的购物车还是空的'));
+            }else{
+                console.log(goods);
+                // template渲染
+                let html = template('cart_goods', {goods});
+                $('#total_carts').html(html);
+                // 全选
+                allChoose();
+                // 计算总数
+                count(goods);
+                // 计算价格
+                money(goods);
+    
+                btnControl();
+            }
         }
         // 编辑事件
         function edit() {  
@@ -165,6 +176,12 @@ require(['./requirejs.config'], () => {
                 }
             }
             
+        }
+        function toDetail() {  
+            // 事件委托
+            $('#index_comm_item').on('click', 'li', function () { 
+                location.href = '/html/detail.html?id=' + $(this).data('id');
+            });
         }
     })
 })

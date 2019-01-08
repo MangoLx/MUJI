@@ -4,7 +4,8 @@ require(['./requirejs.config'], () => {
         (function () {  
             // 初始化显示商品
             listItem.init();
-            waterFull()
+            // waterFull()
+            toDetail();
         })()
 
         // 滚动刷新商品
@@ -21,6 +22,12 @@ require(['./requirejs.config'], () => {
                     }, 500);
                 }
             })
+        }
+        function toDetail() {  
+            // 事件委托
+            $('#list-item').on('click', 'li', function () { 
+                location.href = '/html/detail.html?id=' + $(this).data('id');
+            });
         }
     })
 })
