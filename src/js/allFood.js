@@ -4,22 +4,20 @@ require(['./requirejs.config'], () => {
         (function () {  
             // 初始化显示商品
             listItem.init();
-            // waterFull()
+            waterFull()
             toDetail();
         })()
 
         // 滚动刷新商品
         function waterFull() {  
-            let count = 1;
             // 设定滚动监听
             $(window).on('scroll', function () { 
-                console.log($(this).scrollTop());
-                // 判断滚动距离 
-                if($(this).scrollTop() > $('#list-item').height() * count && count <= 3){
-                    setTimeout(() => {
-                        count++;
-                        listItem.addItem();
-                    }, 500);
+                let top = $('#list-item').height() - $(window).height();
+                if($(window).scrollTop() > top && $('#list-item').find('li').length < 30){
+                    // 加载数据
+                    console.log($('#list-item').find('li').length);
+                    
+                    listItem.addItem();
                 }
             })
         }
