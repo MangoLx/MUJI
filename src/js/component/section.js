@@ -1,15 +1,32 @@
 define(['jquery', 'cookie'], function() {
     class Section{
         constructor(){
-            this.init();
-            this.search();
+            this.init().search();
         }
         init(){
             new Promise(function (resolve, reject) {  
                 $('section').load('/html/component/section.html', function () {  
                     resolve();
                 })
-            }).then(function () {  
+            }).then(function () { 
+                // 接口连接不上，暂时禁用 
+                // 搜搜按钮监听
+                // $('.search').on('submit', function (e) {
+                //     e.preventDefault();
+                //     // 表单元素序列化  
+                //     var str = $('.search').serialize();
+                //     $.getJSON("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=?&" + str, function (res) {
+                //         var data = res.s;
+                //         $('.search-result').empty().show();
+                //         data.forEach((item, i) => {
+                //             $('<li>').html(item).appendTo($('.search-result'))
+                //         });       
+                //     });
+                //     $('.search-result').on('click', 'li', function () {  
+                //         $("input[type=text]").val($(this).text());
+                //         $('.search-result').hide();
+                //     });
+                // })
                 let QR_code = $('#QR_code');
                 // 鼠标移入显示二维码
                 $('#app').hover(function () {
@@ -36,13 +53,11 @@ define(['jquery', 'cookie'], function() {
                         location.href = '/html/login.html';
                     }
                 })
-            })
+            });
+            return this;
         }
         search(){
-            $('.search').on('submit', function (e) {  
-                alert(1);
-                e.preventDefault();
-            })
+            
         }
     }
     return new Section();

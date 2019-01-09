@@ -19,7 +19,7 @@
         <!-- 商品展示 -->
         <div class="detail-show">
             <div class="detail-show-wrap">
-                <img src="{{ data.detail_img }}" alt="{{ data.detail_name }}">
+                <img src="{{ data.detail_img }}" alt="{{ data.detail_name }}" id='smallImg'>
                 <p>{{ data.detail_name }}</p>
                 <span>￥{{ data.detail_price }}</span>
             </div>
@@ -56,6 +56,10 @@
             </div>
         </div>
 
+        <div class="bigImg">
+            <img src="{{ data.detail_img }}" alt="{{ data.detail_name }}">
+        </div>
+
         <!-- 添加购物车 -->
         <div class="detail-add">
             <div class="add-wrap">
@@ -89,6 +93,7 @@
     <!-- footer -->
     <footer></footer>
 
+    
     <script src="/libs/require/require.js" data-main="/js/detail.js"></script>
 </body>
 </html>

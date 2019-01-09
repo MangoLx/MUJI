@@ -3,6 +3,7 @@ require.config({
     paths: {
         'jquery': 'libs/jquery/jquery-1.11.3.min',
         'cookie': 'libs/jquery/jquery-plugins/jquery.cookie',
+        'parabola': 'libs/jquery/jquery-plugins/parabola',
         'header': 'js/component/header',
         'footer': 'js/component/footer',
         'section': 'js/component/section',
@@ -14,6 +15,9 @@ require.config({
     },
     shim: {
         'cookie': {
+            deps: ['jquery']
+        },
+        'parabola': {
             deps: ['jquery']
         }
     }

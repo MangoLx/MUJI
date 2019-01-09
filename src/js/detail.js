@@ -1,6 +1,6 @@
 // 引入模块
 require(['./requirejs.config'], () => {
-    require(['url', 'template', 'cookie', 'jquery', 'header', 'footer', 'section'], (url, template, cookie) => {
+    require(['url', 'template', 'cookie', 'parabola', 'jquery', 'header', 'footer', 'section'], (url, template, cookie, parabola) => {
         (function () {  
             // 得到id
             getId();
@@ -33,6 +33,8 @@ require(['./requirejs.config'], () => {
                     buy();
                     // 确定方法
                     sureFace();
+                    // 放大图片
+                    openImg();
                 }
             })
         }
@@ -94,6 +96,9 @@ require(['./requirejs.config'], () => {
                         id,name,size,price,imgAddr,count
                     }
                     addCookie(detail);
+
+                    // 商品飞入购物车
+                    parabola();
                 }else{
                     alert('请先登录!');
                     location.href = '/html/login.html';
@@ -113,5 +118,40 @@ require(['./requirejs.config'], () => {
             $.cookie('cart', JSON.stringify(cart), {path: '/', expires: 3});
             console.log(JSON.parse($.cookie('cart')));
         }
+        // 抛物线小球
+        function parabola() {  
+            $('<div>').css({
+                width: 30,
+                height: 30,
+                position: 'fixed',
+                bottom: '43%',
+                left: '49%',
+                zIndex: '3',
+                background: 'url(../images/icon/options.jpg) no-repeat -131px 0',
+                borderRadius: '50%'
+            }).addClass('ball').appendTo($(document.body));
+            console.log($("#cart"));
+            let bool = new Parabola({
+                el: '.ball',
+                curvature: 0.002,
+                duration: 2000,
+                targetEl: $("#cart"),
+                callback: function () {  
+                    $('.ball').remove();
+                    alert('商品正在购物车等着你');
+                }
+            });
+            bool.start();
+        }
+        // 放大图片
+        function openImg() {  
+            $('#smallImg').on('click', function () {  
+                // 放大图片
+                $('.bigImg').stop().fadeIn(500);
+                $('.bigImg').on('click', function () {  
+                    $(this).stop().fadeOut(500);
+                })
+            })
+        }        
     })
 })
