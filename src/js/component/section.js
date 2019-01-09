@@ -2,6 +2,7 @@ define(['jquery', 'cookie'], function() {
     class Section{
         constructor(){
             this.init();
+            this.search();
         }
         init(){
             new Promise(function (resolve, reject) {  
@@ -35,6 +36,12 @@ define(['jquery', 'cookie'], function() {
                         location.href = '/html/login.html';
                     }
                 })
+            })
+        }
+        search(){
+            $('.search').on('submit', function (e) {  
+                alert(1);
+                e.preventDefault();
             })
         }
     }

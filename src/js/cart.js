@@ -9,6 +9,8 @@ require(['./requirejs.config'], () => {
             edit();
 
             toDetail();
+
+            toOrderPage();
         })();
 
         // 加载cookie显示商品
@@ -177,11 +179,39 @@ require(['./requirejs.config'], () => {
             }
             
         }
+        // 点击推荐商品
         function toDetail() {  
             // 事件委托
             $('#index_comm_item').on('click', 'li', function () { 
                 location.href = '/html/detail.html?id=' + $(this).data('id');
             });
+        }
+        // 去结算
+        function toOrderPage() {  
+            $('#goToOrder').on('click', function () {  
+                // 根据选中的商品添加到订单cookie
+                // 找到选中的商品
+                let aLi = $('#total_carts').find('li');
+                let idArr = [];
+                aLi.each(function (index, item) {  
+                    if($(item).find('.goods-choose').prop('checked')){
+                        idArr.push($(item).data('id'));
+                    }
+                })
+                let cartDetails = JSON.parse($.cookie('cart'));
+                let orderDetails = [];
+                $(cartDetails).each(function (index, item) {  
+                    if(idArr.indexOf(Number(item.id)) !== -1){
+                        orderDetails.push(item);
+                    }
+                })
+                // 将选中的商品数组添加到order cookie中
+                $.cookie('order', JSON.stringify(orderDetails), {path: '/', expires: 3});
+                // 跳转订单页面
+                if(confirm('添加订单成功，是否进入订单页?')){
+                    location.href = '/html/order.html';
+                }
+            })
         }
     })
 })

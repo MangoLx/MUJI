@@ -81,17 +81,24 @@ require(['./requirejs.config'], () => {
             });
             // 点击确定添加购物车
             $('#add_sure').on('click', function () {  
-                // 得到商品id、名称、价格、数量、规格、图片地址
-                let id = $('#detail_id').text();
-                let name = $('#detail_name').text();
-                let size = $('#detail_size').text();
-                let price = $('.add-price').text();
-                let imgAddr = $('.add-img').attr('src');
-                let count = Number($('#detail_counts').text());
-                let detail = {
-                    id,name,size,price,imgAddr,count
+                // 判断用户是否登录（cookie）
+                if($.cookie('user')){
+                    // 得到商品id、名称、价格、数量、规格、图片地址
+                    let id = $('#detail_id').text();
+                    let name = $('#detail_name').text();
+                    let size = $('#detail_size').text();
+                    let price = $('.add-price').text();
+                    let imgAddr = $('.add-img').attr('src');
+                    let count = Number($('#detail_counts').text());
+                    let detail = {
+                        id,name,size,price,imgAddr,count
+                    }
+                    addCookie(detail);
+                }else{
+                    alert('请先登录!');
+                    location.href = '/html/login.html';
                 }
-                addCookie(detail);
+                
             });
         }
         function addCookie(obj) {  
