@@ -85,6 +85,14 @@ require(['./requirejs.config'], () => {
                     count(details);
                     money(details);
                     tied();
+                    if(!($('#total_carts').find('li').length)){
+                        $('#total_carts').append($('<strong>').css({
+                            display: 'block', 
+                            lineHeight: '300px',
+                            textAlign: 'center',
+                            backgroundColor: '#cccccc'
+                        }).text('您的购物车还是空的'));
+                    }
                 }
             });
             // 全选按钮
@@ -191,25 +199,29 @@ require(['./requirejs.config'], () => {
             $('#goToOrder').on('click', function () {  
                 // 根据选中的商品添加到订单cookie
                 // 找到选中的商品
-                let aLi = $('#total_carts').find('li');
-                let idArr = [];
-                aLi.each(function (index, item) {  
-                    if($(item).find('.goods-choose').prop('checked')){
-                        idArr.push($(item).data('id'));
+                if($('#total_carts').find('strong').length){
+                    alert('购物车还没东西，无法结算')
+                }else{
+                    let aLi = $('#total_carts').find('li');
+                    let idArr = [];
+                    aLi.each(function (index, item) {  
+                        if($(item).find('.goods-choose').prop('checked')){
+                            idArr.push($(item).data('id'));
+                        }
+                    })
+                    let cartDetails = JSON.parse($.cookie('cart'));
+                    let orderDetails = [];
+                    $(cartDetails).each(function (index, item) {  
+                        if(idArr.indexOf(Number(item.id)) !== -1){
+                            orderDetails.push(item);
+                        }
+                    })
+                    // 将选中的商品数组添加到order cookie中
+                    $.cookie('order', JSON.stringify(orderDetails), {path: '/', expires: 3});
+                    // 跳转订单页面
+                    if(confirm('添加订单成功，是否进入订单页?')){
+                        location.href = '/html/order.html';
                     }
-                })
-                let cartDetails = JSON.parse($.cookie('cart'));
-                let orderDetails = [];
-                $(cartDetails).each(function (index, item) {  
-                    if(idArr.indexOf(Number(item.id)) !== -1){
-                        orderDetails.push(item);
-                    }
-                })
-                // 将选中的商品数组添加到order cookie中
-                $.cookie('order', JSON.stringify(orderDetails), {path: '/', expires: 3});
-                // 跳转订单页面
-                if(confirm('添加订单成功，是否进入订单页?')){
-                    location.href = '/html/order.html';
                 }
             })
         }
