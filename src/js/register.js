@@ -16,6 +16,9 @@ require(['./requirejs.config'], () => {
             && addr.val() !== ''){
                 btn.addClass('ok');
                 ok = true;
+            }else{
+                btn.removeClass('ok');
+                ok = false;
             }  
         })
 

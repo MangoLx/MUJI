@@ -13,6 +13,9 @@ require(['./requirejs.config'], () => {
             if(username.val() !== '' && password.val() !== ''){
                 btn.addClass('ok');
                 ok = true;
+            }else{
+                btn.removeClass('ok');
+                ok = false;
             }  
         })
         // 登录按钮监听
