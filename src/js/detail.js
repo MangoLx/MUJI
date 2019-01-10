@@ -57,12 +57,11 @@ require(['./requirejs.config'], () => {
                 e.stopPropagation();
             });
             $('#add_buy').on('click', function (e) {  
-                if(flag){
-                    $('.detail-add').animate({bottom: 0});
-                    flag = false;
+                if($.cookie('user')){
+                    location.href = '/html/cart.html'
                 }else{
-                    $('.detail-add').animate({bottom: -306});
-                    flag = true;
+                    alert('请先登录!');
+                    location.href = '/html/login.html'
                 }
                 e.stopPropagation();
             });
