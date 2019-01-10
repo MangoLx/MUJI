@@ -2,11 +2,19 @@
 require(['./requirejs.config'], () => {
     require(['cookie', 'template', 'jquery', 'header', 'footer'], (cookie, template) => {
         (function () {  
+            // 判断登录
+            login();
             // 加载地址
             loadAddr();
             // 加载信息
             loadOrderDetails();
         })()
+        // 判断是否登录
+        function login() {  
+            if(!($.cookie('user'))){
+                location.href = '/html/login.html'
+            }
+        }
         // 加载用户地址信息
         function loadAddr() {  
             let user = JSON.parse($.cookie('user'));

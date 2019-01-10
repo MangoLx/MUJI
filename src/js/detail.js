@@ -10,6 +10,11 @@ require(['./requirejs.config'], () => {
         // 读取获得的id发送请求函数
         function getId() {  
             let id = parseInt(location.search.slice(4));
+            // 判断是否有商品id传入
+            if(!id){
+                // 重定向
+                location.href = '/html/allFood.html'
+            }
             new Promise((resolve, reject) => {
                 $.ajax({
                     url: url.baseUrlRap + 'get_detail_info',
